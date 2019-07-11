@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/izxnnq.wav-283442a4a97581f5ef5d52c67b4a1ecb.sample"
+
+[deps]
+
+source_file="res://assets/music/izxnnq.wav"
+dest_files=[ "res://.import/izxnnq.wav-283442a4a97581f5ef5d52c67b4a1ecb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

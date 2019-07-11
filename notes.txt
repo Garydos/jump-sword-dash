@@ -1,0 +1,2 @@
+for enemies getting hit, in non-protype version use signals instead, that way
+the sword itself can determine the mount of damage to inflict

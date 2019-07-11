@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="StreamTexture" id=25]
+flags = 3
+load_path = "res://.import/Layer_0000_9.png-47596e04344b5b696a39246de0197a5a.stex"
+
+[sub_resource type="StreamTexture" id=26]
+flags = 3
+load_path = "res://.import/Layer_0002_7.png-6e1b475bec023aaf641296751dd02403.stex"
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.4, 0.01 )
+motion_offset = Vector2( -500, -50 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+texture = SubResource( 25 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 500, 520, 5000, 500 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.8, 0.05 )
+motion_offset = Vector2( -500, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer2"]
+texture = SubResource( 26 )
+centered = false
+offset = Vector2( 0, -350 )
+flip_v = true
+region_enabled = true
+region_rect = Rect2( 0, -1000, 5000, 600 )

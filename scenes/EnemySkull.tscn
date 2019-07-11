@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/EnemySkull.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/Jump100.wav" type="AudioStream" id=3]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/tile786.png-52ee5af23fc60645f6854e9b3ff12e4e.stex"
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 132.0
+
+[node name="EnemySkull" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+texture = SubResource( 1 )
+
+[node name="JumpTimer" type="Timer" parent="." index="4"]
+
+[node name="VisibilityNotifier2D" parent="." index="5"]
+position = Vector2( -0.5, -1.19209e-007 )
+scale = Vector2( 0.55, 0.6 )
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="." index="10"]
+stream = ExtResource( 3 )
+volume_db = -4.727
+bus = "Enemy SFX"
+
+[node name="SightRadius" type="Area2D" parent="." index="11" groups=[
+"enemies_aux",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SightRadius" index="0" groups=[
+"enemies_aux",
+]]
+visible = false
+shape = SubResource( 2 )
+[connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
+[connection signal="area_entered" from="SightRadius" to="." method="_on_SightRadius_area_entered"]
+[connection signal="area_exited" from="SightRadius" to="." method="_on_SightRadius_area_exited"]

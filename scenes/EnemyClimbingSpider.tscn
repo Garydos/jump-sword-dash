@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/EnemyClimbingSpider.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/skittering.wav" type="AudioStream" id=3]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/colored_transparent_fixed.png-283f78511b4a6b33f0a339a4356a77fb.stex"
+
+[sub_resource type="Animation" id=2]
+resource_name = "TurnClockwiseFromBottom"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "TurnClockwiseFromTop"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 180.0, 270.0, 360.0 ]
+}
+
+[node name="EnemyClimbingSpider" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="." index="8"]
+rotation = 3.14159
+texture = SubResource( 1 )
+vframes = 32
+hframes = 32
+frame = 188
+
+[node name="SwitchUpDown" type="Timer" parent="." index="9"]
+wait_time = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="10"]
+anims/TurnClockwiseFromBottom = SubResource( 2 )
+anims/TurnClockwiseFromTop = SubResource( 3 )
+
+[node name="SkitterSound" type="AudioStreamPlayer" parent="." index="11"]
+stream = ExtResource( 3 )
+volume_db = -9.618
+bus = "Enemy SFX"
+[connection signal="timeout" from="SwitchUpDown" to="." method="_on_SwitchUpDown_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

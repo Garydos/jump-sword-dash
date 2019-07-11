@@ -1,0 +1,271 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scenes/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Level3.gd" type="Script" id=2]
+[ext_resource path="res://scenes/EnemyClimbingSpider.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/EnemyWizard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/EnemyFairy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/MovingPlatform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/FallingPlatform.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/EnemySkull.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/EnemyCharger.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/EnemyFallingBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/music/izxnxkqk.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/music/Healing Tune.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/music/ixnxnq.ogg" type="AudioStream" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 90, 150 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2490, 130 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 122, 10 )
+
+[node name="Level3" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+checkpoint1spawn = Vector2( 2289, -673 )
+nextLevel = "Level4.tscn"
+currentLevel = "Level3.tscn"
+
+[node name="TileMap" parent="." index="0"]
+editor/display_folded = true
+position = Vector2( 13, 0 )
+tile_data = PoolIntArray( -3932060, 0, 1114122, -3866524, 0, 1114122, -3800988, 0, 1114122, -3735452, 0, 1114122, -3669916, 0, 1114122, -3604380, 0, 1114122, -3538844, 0, 1114122, -3473308, 0, 1114122, -3407772, 0, 1114122, -3342236, 0, 1114122, -3276700, 0, 1114122, -3211164, 0, 1114122, -3145628, 0, 1114122, -3080092, 0, 1114122, -3014556, 0, 1114122, -2949020, 0, 1114122, -2948968, 0, 393238, -2948967, 0, 393238, -2948966, 0, 393238, -2948965, 0, 393238, -2948964, 0, 393238, -2883484, 0, 1114122, -2817963, 0, 1114122, -2817962, 0, 1114122, -2817961, 0, 1114122, -2817960, 0, 1114122, -2817959, 0, 1114122, -2817958, 0, 1114122, -2817957, 0, 1114122, -2817956, 0, 1114122, -2817955, 0, 1114122, -2817954, 0, 1114122, -2817953, 0, 1114122, -2817952, 0, 1114122, -2817951, 0, 1114122, -2817950, 0, 1114122, -2817949, 0, 1114122, -2817948, 0, 1114122, -2752499, 0, 1114122, -2752427, 0, 1114122, -2752366, 0, 393238, -2752365, 0, 393238, -2752364, 0, 393238, -2752363, 0, 393238, -2752362, 0, 393238, -2752361, 0, 393238, -2752360, 0, 393238, -2752359, 0, 393238, -2752358, 0, 393238, -2752357, 0, 393238, -2752356, 0, 393238, -2752355, 0, 393238, -2752354, 0, 393238, -2752353, 0, 393238, -2752352, 0, 393238, -2752351, 0, 393238, -2752350, 0, 393238, -2752349, 0, 393238, -2752348, 0, 393238, -2752347, 0, 393238, -2752346, 0, 393238, -2752345, 0, 393238, -2752344, 0, 393238, -2752343, 0, 393238, -2752342, 0, 393238, -2752341, 0, 393238, -2752340, 0, 393238, -2752339, 0, 393238, -2752338, 0, 393238, -2686963, 0, 1114122, -2686891, 0, 1114122, -2621427, 0, 1114122, -2621355, 0, 1114122, -2555891, 0, 1114122, -2555819, 0, 1114122, -2490355, 0, 1114122, -2490283, 0, 1114122, -2490277, 0, 1114122, -2490276, 0, 1114122, -2490275, 0, 1114122, -2490274, 0, 1114122, -2490273, 0, 1114122, -2490272, 0, 1114122, -2490271, 0, 1114122, -2490270, 0, 1114122, -2490269, 0, 1114122, -2490268, 0, 1114122, -2490267, 0, 1114122, -2490266, 0, 1114122, -2490265, 0, 1114122, -2490264, 0, 1114122, -2490263, 0, 1114122, -2490262, 0, 1114122, -2490261, 0, 1114122, -2424819, 0, 1114122, -2424749, 0, 1114122, -2424748, 0, 1114122, -2424747, 0, 1114122, -2424746, 0, 1114122, -2424745, 0, 1114122, -2424744, 0, 1114122, -2424732, 0, 1114122, -2359283, 0, 1114122, -2359213, 0, 1114122, -2359196, 0, 1114122, -2293747, 0, 1114122, -2293678, 0, 1114122, -2293671, 0, 393237, -2293670, 0, 393239, -2293660, 0, 1114122, -2228211, 0, 1114122, -2228142, 0, 1114122, -2228124, 0, 1114122, -2162675, 0, 1114122, -2162606, 0, 1114122, -2162603, 0, 196630, -2162597, 0, 393237, -2162596, 0, 393239, -2162588, 0, 1114122, -2097139, 0, 1114122, -2097070, 0, 1114122, -2097067, 0, 196630, -2097052, 0, 1114122, -2031603, 0, 1114122, -2031534, 0, 1114122, -2031533, 0, 1114122, -2031532, 0, 1114122, -2031531, 0, 1114122, -2031530, 0, 1114122, -2031529, 0, 1114122, -2031528, 0, 1114122, -2031522, 0, 1114122, -2031521, 0, 1114122, -2031520, 0, 1114122, -2031519, 0, 1114122, -2031518, 0, 1114122, -2031517, 0, 1114122, -2031516, 0, 1114122, -1966067, 0, 1114122, -1965992, 0, 1114122, -1965986, 0, 1114122, -1900531, 0, 1114122, -1900456, 0, 1114122, -1900450, 0, 1114122, -1834995, 0, 1114122, -1834920, 0, 1114122, -1834914, 0, 1114122, -1769459, 0, 1114122, -1769384, 0, 1114122, -1769379, 0, 1114122, -1769378, 0, 1114122, -1703923, 0, 1114122, -1703848, 0, 1114122, -1703843, 0, 1114122, -1638387, 0, 1114122, -1638312, 0, 1114122, -1638307, 0, 1114122, -1572851, 0, 1114122, -1572779, 0, 1114122, -1572778, 0, 1114122, -1572777, 0, 1114122, -1572776, 0, 1114122, -1572771, 0, 1114122, -1507315, 0, 1114122, -1507235, 0, 1114122, -1441779, 0, 1114122, -1441699, 0, 1114122, -1376243, 0, 1114122, -1376163, 0, 1114122, -1310707, 0, 1114122, -1310652, 0, 1114122, -1310651, 0, 1114122, -1310650, 0, 1114122, -1310649, 0, 1114122, -1310648, 0, 1114122, -1310647, 0, 1114122, -1310639, 0, 1114122, -1310638, 0, 1114122, -1310637, 0, 1114122, -1310636, 0, 1114122, -1310635, 0, 1114122, -1310634, 0, 1114122, -1310633, 0, 1114122, -1310632, 0, 1114122, -1310631, 0, 1114122, -1310630, 0, 1114122, -1310629, 0, 1114122, -1310628, 0, 1114122, -1310627, 0, 1114122, -1245171, 0, 1114122, -1245116, 0, 1114122, -1245111, 0, 1114122, -1245103, 0, 1114122, -1179638, 0, 1114122, -1179637, 0, 1114122, -1179636, 0, 1114122, -1179635, 0, 1114122, -1179599, 0, 0, -1179598, 0, 0, -1179580, 0, 1114122, -1179575, 0, 1114122, -1179567, 0, 1114122, -1114102, 0, 1114122, -1114044, 0, 1114122, -1114039, 0, 1114122, -1114031, 0, 1114122, -1048566, 0, 1114122, -1048547, 0, 393237, -1048546, 0, 393238, -1048545, 0, 393238, -1048544, 0, 393238, -1048543, 0, 393238, -1048542, 0, 393238, -1048541, 0, 393238, -1048540, 0, 393238, -1048539, 0, 393238, -1048538, 0, 393238, -1048537, 0, 393238, -1048536, 0, 393238, -1048535, 0, 393238, -1048534, 0, 393238, -1048533, 0, 393238, -1048532, 0, 393238, -1048531, 0, 393238, -1048508, 0, 1114122, -1048503, 0, 1114122, -1048502, 0, 22, -1048501, 0, 22, -1048500, 0, 22, -1048499, 0, 22, -1048498, 0, 22, -1048497, 0, 22, -1048496, 0, 22, -1048495, 0, 1114122, -983030, 0, 1114122, -983018, 0, 393237, -983017, 0, 393238, -983016, 0, 393238, -983015, 0, 393238, -983014, 0, 393239, -982972, 0, 1114122, -982967, 0, 1114122, -982966, 0, 1114122, -982965, 0, 1114122, -982964, 0, 1114122, -982963, 0, 1114122, -982962, 0, 1114122, -982961, 0, 1114122, -982960, 0, 1114122, -982959, 0, 1114122, -917494, 0, 1114122, -917490, 0, 1114122, -917489, 0, 1114122, -917488, 0, 1114122, -917487, 0, 1114122, -917486, 0, 1114122, -917485, 0, 1114122, -917484, 0, 1114122, -917436, 0, 1114122, -917431, 0, 1114122, -851958, 0, 1114122, -851954, 0, 1114122, -851948, 0, 1114122, -851900, 0, 1114122, -851895, 0, 1114122, -786422, 0, 1114122, -786418, 0, 1114122, -786412, 0, 1114122, -786364, 0, 1114122, -786359, 0, 1114122, -720886, 0, 1114122, -720882, 0, 1114122, -720876, 0, 1114122, -720828, 0, 1114122, -720823, 0, 1114122, -655350, 0, 1114122, -655346, 0, 1114122, -655340, 0, 1114122, -655292, 0, 1114122, -655287, 0, 1114122, -589814, 0, 1114122, -589810, 0, 1114122, -589804, 0, 1114122, -589756, 0, 1114122, -589751, 0, 1114122, -524278, 0, 1114122, -524274, 0, 1114122, -524268, 0, 1114122, -524220, 0, 1114122, -524215, 0, 1114122, -458742, 0, 1114122, -458738, 0, 1114122, -458732, 0, 1114122, -458684, 0, 1114122, -458679, 0, 1114122, -393206, 0, 1114122, -393202, 0, 1114122, -393196, 0, 1114122, -393148, 0, 1114122, -393143, 0, 1114122, -327670, 0, 1114122, -327666, 0, 1114122, -327660, 0, 1114122, -327612, 0, 1114122, -327607, 0, 1114122, -262134, 0, 1114122, -262130, 0, 1114122, -262124, 0, 1114122, -262076, 0, 1114122, -262071, 0, 1114122, -196598, 0, 1114122, -196594, 0, 1114122, -196588, 0, 1114122, -196540, 0, 1114122, -196535, 0, 1114122, -131062, 0, 1114122, -131058, 0, 1114122, -131052, 0, 1114122, -131004, 0, 1114122, -130999, 0, 1114122, -65526, 0, 1114122, -65522, 0, 1114122, -65516, 0, 1114122, -65468, 0, 1114122, -65463, 0, 1114122, 10, 0, 1114122, 14, 0, 1114122, 20, 0, 1114122, 68, 0, 1114122, 73, 0, 1114122, 65546, 0, 1114122, 65550, 0, 1114122, 65556, 0, 1114122, 65604, 0, 1114122, 65609, 0, 1114122, 131082, 0, 1114122, 131086, 0, 1114122, 131092, 0, 1114122, 131140, 0, 1114122, 131145, 0, 1114122, 196618, 0, 1114122, 196622, 0, 1114122, 196628, 0, 1114122, 196676, 0, 1114122, 196681, 0, 1114122, 262154, 0, 1114122, 262158, 0, 1114122, 262164, 0, 1114122, 262212, 0, 1114122, 262217, 0, 1114122, 327680, 0, 196630, 327681, 0, 1114122, 327682, 0, 1114122, 327683, 0, 1114122, 327684, 0, 1114122, 327685, 0, 1114122, 327686, 0, 1114122, 327687, 0, 1114122, 327688, 0, 1114122, 327689, 0, 1114122, 327690, 0, 1114122, 327694, 0, 1114122, 327700, 0, 1114122, 327748, 0, 1114122, 327753, 0, 1114122, 393216, 0, 196630, 393230, 0, 1114122, 393236, 0, 1114122, 393284, 0, 1114122, 393289, 0, 1114122, 524278, 0, 196630, 524279, 0, 196630, 524280, 0, 196630, 524281, 0, 196630, 524282, 0, 196630, 524283, 0, 196630, 524284, 0, 196630, 524285, 0, 196630, 524286, 0, 196630, 524287, 0, 196630, 458752, 0, 196630, 458766, 0, 1114122, 458772, 0, 1114122, 458820, 0, 1114122, 458825, 0, 1114122, 524288, 0, 196630, 524302, 0, 1114122, 524308, 0, 1114122, 524356, 0, 1114122, 524361, 0, 1114122, 589824, 0, 655368, 589838, 0, 1114122, 589844, 0, 1114122, 589892, 0, 1114122, 589897, 0, 1114122, 720887, 0, 196630, 720888, 0, 196630, 720889, 0, 196630, 720890, 0, 196630, 720891, 0, 196630, 720892, 0, 196630, 720893, 0, 196630, 720894, 0, 196630, 720895, 0, 196630, 655360, 0, 196630, 655361, 0, 1114122, 655362, 0, 1114122, 655363, 0, 1114122, 655364, 0, 1114122, 655365, 0, 1114122, 655366, 0, 1114122, 655367, 0, 1114122, 655368, 0, 1114122, 655369, 0, 1114122, 655370, 0, 1114122, 655371, 0, 1114122, 655372, 0, 1114122, 655373, 0, 1114122, 655374, 0, 1114122, 655380, 0, 1114122, 655428, 0, 1114122, 655433, 0, 1114122, 720916, 0, 1114122, 720964, 0, 1114122, 720969, 0, 1114122, 786452, 0, 1114122, 786500, 0, 1114122, 786505, 0, 1114122, 851988, 0, 1114122, 852036, 0, 1114122, 852041, 0, 1114122, 917524, 0, 1114122, 917572, 0, 1114122, 917577, 0, 1114122, 983060, 0, 1114122, 983108, 0, 1114122, 983113, 0, 1114122, 1048644, 0, 1114122, 1048649, 0, 1114122 )
+
+[node name="EnemyClimbingSpider" parent="TileMap" index="0" instance=ExtResource( 3 )]
+position = Vector2( 215, -55 )
+wall_direction = "right"
+
+[node name="EnemyHBat" parent="TileMap" index="1" instance=ExtResource( 3 )]
+position = Vector2( 185, 85 )
+
+[node name="EnemyWizard" parent="TileMap" index="2" instance=ExtResource( 4 )]
+position = Vector2( 530, -265 )
+
+[node name="EnemyFairy" parent="TileMap" index="3" instance=ExtResource( 5 )]
+position = Vector2( 710, -320 )
+
+[node name="MovingPlatform" parent="TileMap" index="4" instance=ExtResource( 6 )]
+position = Vector2( 795, -278.5 )
+
+[node name="MovingPlatform2" parent="TileMap" index="5" instance=ExtResource( 6 )]
+position = Vector2( 895, -310 )
+moving_direction = "right"
+
+[node name="MovingPlatform3" parent="TileMap" index="6" instance=ExtResource( 6 )]
+position = Vector2( 1013, -312 )
+
+[node name="EnemyFairy2" parent="TileMap" index="7" instance=ExtResource( 5 )]
+position = Vector2( 930, -365 )
+
+[node name="FallingPlatform2" parent="TileMap" index="8" instance=ExtResource( 7 )]
+position = Vector2( 1207, -313 )
+
+[node name="FallingPlatform" parent="TileMap" index="9" instance=ExtResource( 7 )]
+position = Vector2( 1191, -313 )
+
+[node name="FallingPlatform3" parent="TileMap" index="10" instance=ExtResource( 7 )]
+position = Vector2( 1223, -313 )
+
+[node name="FallingPlatform4" parent="TileMap" index="11" instance=ExtResource( 7 )]
+position = Vector2( 1238.5, -313 )
+
+[node name="FallingPlatform5" parent="TileMap" index="12" instance=ExtResource( 7 )]
+position = Vector2( 1255, -313 )
+
+[node name="FallingPlatform6" parent="TileMap" index="13" instance=ExtResource( 7 )]
+position = Vector2( 1272, -313 )
+
+[node name="FallingPlatform7" parent="TileMap" index="14" instance=ExtResource( 7 )]
+position = Vector2( 1288.5, -313 )
+
+[node name="EnemyWizard2" parent="TileMap" index="15" instance=ExtResource( 4 )]
+position = Vector2( 1368, -537 )
+
+[node name="EnemySkull" parent="TileMap" index="16" instance=ExtResource( 8 )]
+position = Vector2( 1433.5, -339.5 )
+
+[node name="EnemyCharger" parent="TileMap" index="17" instance=ExtResource( 9 )]
+position = Vector2( 1571.5, -507.5 )
+
+[node name="EnemySkull2" parent="TileMap" index="18" instance=ExtResource( 8 )]
+position = Vector2( 1400.5, -604.5 )
+
+[node name="FallingPlatform8" parent="TileMap" index="19" instance=ExtResource( 7 )]
+position = Vector2( 1783, -600 )
+
+[node name="FallingPlatform9" parent="TileMap" index="20" instance=ExtResource( 7 )]
+position = Vector2( 1847.5, -600 )
+
+[node name="FallingPlatform10" parent="TileMap" index="21" instance=ExtResource( 7 )]
+position = Vector2( 1909, -600 )
+
+[node name="FallingPlatform11" parent="TileMap" index="22" instance=ExtResource( 7 )]
+position = Vector2( 1972.5, -600 )
+
+[node name="FallingPlatform12" parent="TileMap" index="23" instance=ExtResource( 7 )]
+position = Vector2( 1863, -600 )
+
+[node name="FallingPlatform13" parent="TileMap" index="24" instance=ExtResource( 7 )]
+position = Vector2( 1878, -600 )
+
+[node name="FallingPlatform14" parent="TileMap" index="25" instance=ExtResource( 7 )]
+position = Vector2( 1893.5, -600 )
+
+[node name="FallingPlatform15" parent="TileMap" index="26" instance=ExtResource( 7 )]
+position = Vector2( 1925, -600 )
+
+[node name="FallingPlatform16" parent="TileMap" index="27" instance=ExtResource( 7 )]
+position = Vector2( 1941, -600 )
+
+[node name="FallingPlatform17" parent="TileMap" index="28" instance=ExtResource( 7 )]
+position = Vector2( 1957, -600 )
+
+[node name="EnemyFairy3" parent="TileMap" index="29" instance=ExtResource( 5 )]
+position = Vector2( 1903.5, -661.5 )
+
+[node name="FallingPlatform18" parent="TileMap" index="30" instance=ExtResource( 7 )]
+position = Vector2( 1766.5, -600 )
+
+[node name="FallingPlatform19" parent="TileMap" index="31" instance=ExtResource( 7 )]
+position = Vector2( 1831, -600 )
+
+[node name="FallingPlatform20" parent="TileMap" index="32" instance=ExtResource( 7 )]
+position = Vector2( 2006, -628 )
+
+[node name="FallingPlatform21" parent="TileMap" index="33" instance=ExtResource( 7 )]
+position = Vector2( 2020.5, -628 )
+
+[node name="FallingPlatform22" parent="TileMap" index="34" instance=ExtResource( 7 )]
+position = Vector2( 2055.5, -660.5 )
+
+[node name="FallingPlatform23" parent="TileMap" index="35" instance=ExtResource( 7 )]
+position = Vector2( 2070.5, -660.5 )
+
+[node name="FallingPlatform24" parent="TileMap" index="36" instance=ExtResource( 7 )]
+position = Vector2( 2086, -660.5 )
+
+[node name="FallingPlatform25" parent="TileMap" index="37" instance=ExtResource( 7 )]
+position = Vector2( 2101.5, -660.5 )
+
+[node name="FallingPlatform26" parent="TileMap" index="38" instance=ExtResource( 7 )]
+position = Vector2( 2117.5, -660.5 )
+
+[node name="FallingPlatform27" parent="TileMap" index="39" instance=ExtResource( 7 )]
+position = Vector2( 2133, -660.5 )
+
+[node name="FallingPlatform28" parent="TileMap" index="40" instance=ExtResource( 7 )]
+position = Vector2( 2148, -660.5 )
+
+[node name="FallingPlatform29" parent="TileMap" index="41" instance=ExtResource( 7 )]
+position = Vector2( 2163, -660.5 )
+
+[node name="FallingPlatform30" parent="TileMap" index="42" instance=ExtResource( 7 )]
+position = Vector2( 2178.5, -660.5 )
+
+[node name="FallingPlatform31" parent="TileMap" index="43" instance=ExtResource( 7 )]
+position = Vector2( 2193.5, -660.5 )
+
+[node name="FallingPlatform32" parent="TileMap" index="44" instance=ExtResource( 7 )]
+position = Vector2( 2209.5, -660.5 )
+
+[node name="FallingPlatform33" parent="TileMap" index="45" instance=ExtResource( 7 )]
+position = Vector2( 2225, -660.5 )
+
+[node name="FallingPlatform34" parent="TileMap" index="46" instance=ExtResource( 7 )]
+position = Vector2( 2240.5, -660.5 )
+
+[node name="FallingPlatform35" parent="TileMap" index="47" instance=ExtResource( 7 )]
+position = Vector2( 2256, -660.5 )
+
+[node name="FallingPlatform36" parent="TileMap" index="48" instance=ExtResource( 7 )]
+position = Vector2( 2272, -660.5 )
+
+[node name="FallingPlatform37" parent="TileMap" index="49" instance=ExtResource( 7 )]
+position = Vector2( 2288, -660.5 )
+
+[node name="FallingPlatform38" parent="TileMap" index="50" instance=ExtResource( 7 )]
+position = Vector2( 2304, -660.5 )
+
+[node name="FallingPlatform39" parent="TileMap" index="51" instance=ExtResource( 7 )]
+position = Vector2( 2319.5, -660.5 )
+
+[node name="EnemyFallingBox2" parent="TileMap" index="52" instance=ExtResource( 10 )]
+position = Vector2( 2227, -770 )
+
+[node name="EnemyFallingBox" parent="TileMap" index="53" instance=ExtResource( 10 )]
+position = Vector2( 2149.5, -769.5 )
+
+[node name="EnemyCharger2" parent="TileMap" index="54" instance=ExtResource( 9 )]
+position = Vector2( 2282, -682 )
+
+[node name="EnemyFairy4" parent="TileMap" index="55" instance=ExtResource( 5 )]
+position = Vector2( 2188, -726 )
+
+[node name="EnemySkull3" parent="TileMap" index="56" instance=ExtResource( 8 )]
+position = Vector2( 2463, -737 )
+
+[node name="EnemyWizard3" parent="TileMap" index="57" instance=ExtResource( 4 )]
+position = Vector2( 2531.5, -688 )
+
+[node name="EnemyClimbingSpider2" parent="TileMap" index="58" instance=ExtResource( 3 )]
+position = Vector2( 1480, -331.5 )
+wall_direction = "right"
+climb_speed = 40
+
+[node name="Player" parent="." index="1"]
+position = Vector2( 119, 291 )
+
+[node name="Camera2D" parent="Player" index="1"]
+limit_left = -200
+limit_top = -2000
+limit_right = 5350
+
+[node name="CollisionShape2D" parent="WinArea" index="0"]
+position = Vector2( 7603, -1429 )
+
+[node name="Music" parent="." index="7"]
+stream = ExtResource( 11 )
+
+[node name="WinMusic" parent="." index="8"]
+stream = ExtResource( 12 )
+
+[node name="DeathMusic" parent="." index="9"]
+stream = ExtResource( 13 )
+
+[node name="checkpoint1" type="Area2D" parent="." index="11"]
+position = Vector2( 2280, -656 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint1" index="0"]
+shape = SubResource( 1 )
+
+[node name="EmptyFloor" type="Area2D" parent="." index="12" groups=[
+"instakill",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EmptyFloor" index="0" groups=[
+"instakill",
+]]
+position = Vector2( 2490, 570 )
+shape = SubResource( 2 )
+
+[node name="Spikes1" type="Area2D" parent="." index="13" groups=[
+"instakill",
+]]
+position = Vector2( 2497, -489 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes1" index="0" groups=[
+"instakill",
+]]
+shape = SubResource( 3 )
+[connection signal="area_entered" from="checkpoint1" to="." method="_on_checkpoint1_area_entered"]
+
+[editable path="Player"]

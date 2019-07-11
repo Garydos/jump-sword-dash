@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ixnxnekw.ogg-4244b41e02758d68f2b84ffb64f71925.oggstr"
+
+[deps]
+
+source_file="res://assets/music/ixnxnekw.ogg"
+dest_files=[ "res://.import/ixnxnekw.ogg-4244b41e02758d68f2b84ffb64f71925.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

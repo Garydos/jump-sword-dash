@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/EnemyWizard.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/Fireball.wav" type="AudioStream" id=3]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/tile056 - Copy.png-f83ce43ae55bcc1d9a10a3517315228d.stex"
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/tile832.png-dc71e1e52f663101dacbf289719ab2d0.stex"
+
+[sub_resource type="Animation" id=3]
+resource_name = "StaffAttackLeft"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../EnemyWizard/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ SubResource( 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../EnemyWizard/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ SubResource( 1 ) ]
+}
+
+[node name="EnemyWizard" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+max_health = 2
+
+[node name="VisibilityNotifier2D" parent="." index="3"]
+position = Vector2( -5.68434e-014, 5.96046e-008 )
+scale = Vector2( 2.2, 1.95 )
+
+[node name="Sprite" type="Sprite" parent="." index="5"]
+texture = SubResource( 1 )
+
+[node name="Staff" type="Sprite" parent="." index="6"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 7, -3 )
+texture = SubResource( 2 )
+
+[node name="StaffAnimation" type="AnimationPlayer" parent="." index="7"]
+anims/StaffAttackLeft = SubResource( 3 )
+anims/StaffAttackRight = SubResource( 4 )
+
+[node name="CastTimer" type="Timer" parent="." index="8"]
+wait_time = 2.0
+
+[node name="FireballSound" type="AudioStreamPlayer" parent="." index="12"]
+stream = ExtResource( 3 )
+bus = "Enemy SFX"
+[connection signal="animation_finished" from="StaffAnimation" to="." method="_on_StaffAnimation_animation_finished"]
+[connection signal="timeout" from="CastTimer" to="." method="_on_CastTimer_timeout"]

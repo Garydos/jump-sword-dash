@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/tile730.png-f458f4cd671c4200fe08b78cbd66e6aa.stex"
+
+[node name="PlayerHealth" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="HealthColumn1" type="VBoxContainer" parent="."]
+margin_right = 16.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 0, 16 )
+
+[node name="Heart0" type="TextureRect" parent="HealthColumn1"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = SubResource( 1 )
+
+[node name="Heart1" type="TextureRect" parent="HealthColumn1"]
+margin_top = 20.0
+margin_right = 16.0
+margin_bottom = 36.0
+texture = SubResource( 1 )
+
+[node name="Heart2" type="TextureRect" parent="HealthColumn1"]
+margin_top = 40.0
+margin_right = 16.0
+margin_bottom = 56.0
+texture = SubResource( 1 )
+
+[node name="Heart3" type="TextureRect" parent="HealthColumn1"]
+margin_top = 60.0
+margin_right = 16.0
+margin_bottom = 76.0
+texture = SubResource( 1 )
+
+[node name="Heart4" type="TextureRect" parent="HealthColumn1"]
+margin_top = 80.0
+margin_right = 16.0
+margin_bottom = 96.0
+texture = SubResource( 1 )

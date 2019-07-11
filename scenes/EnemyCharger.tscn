@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/EnemyCharger.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/Spotted.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sfx/Dash.wav" type="AudioStream" id=4]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/tile315.png-5dbf84b15f59af0fd3fcc9dfcfef3176.stex"
+
+[sub_resource type="Animation" id=2]
+resource_name = "Alerted"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../EnemyCharger/AlertedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -13 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 64.0078
+
+[sub_resource type="StreamTexture" id=4]
+load_path = "res://.import/tile819.png-44e475c1d22b81ed2eedc121567947cd.stex"
+
+[node name="EnemyCharger" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+max_health = 1
+
+[node name="VisibilityNotifier2D" parent="." index="3"]
+position = Vector2( 2.38419e-007, 2.38419e-007 )
+scale = Vector2( 0.6, 0.7 )
+
+[node name="Sprite" type="Sprite" parent="." index="5"]
+texture = SubResource( 1 )
+
+[node name="AlertAnimation" type="AnimationPlayer" parent="." index="6"]
+anims/Alerted = SubResource( 2 )
+
+[node name="SightCircle" type="Area2D" parent="." index="7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SightCircle" index="0"]
+shape = SubResource( 3 )
+
+[node name="AlertedSprite" type="Sprite" parent="." index="8"]
+position = Vector2( 0, -13 )
+texture = SubResource( 4 )
+
+[node name="AlertedTimer" type="Timer" parent="." index="9"]
+wait_time = 0.5
+
+[node name="AlertedSound" type="AudioStreamPlayer" parent="." index="13"]
+stream = ExtResource( 3 )
+bus = "Enemy SFX"
+
+[node name="ChargeSound" type="AudioStreamPlayer" parent="." index="14"]
+stream = ExtResource( 4 )
+bus = "Enemy SFX"
+[connection signal="area_entered" from="SightCircle" to="." method="_on_SightCircle_area_entered"]
+[connection signal="timeout" from="AlertedTimer" to="." method="_on_AlertedTimer_timeout"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/EnemyFairy.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/Wings.wav" type="AudioStream" id=3]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/colored_transparent_fixed.png-283f78511b4a6b33f0a339a4356a77fb.stex"
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle_anim"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Area2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, 0 ) ]
+}
+
+[node name="EnemyFairy" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="VisibilityNotifier2D" parent="." index="3"]
+position = Vector2( 2.86102e-006, -2.38419e-007 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Sprite" type="Sprite" parent="." index="8"]
+texture = SubResource( 1 )
+vframes = 32
+hframes = 32
+frame = 191
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+anims/idle_anim = SubResource( 2 )
+
+[node name="AttackTimer" type="Timer" parent="." index="10"]
+wait_time = 0.75
+
+[node name="RestTimer" type="Timer" parent="." index="11"]
+wait_time = 2.0
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="." index="12"]
+stream = ExtResource( 3 )
+volume_db = -12.106
+bus = "Enemy SFX"
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+[connection signal="timeout" from="RestTimer" to="." method="_on_RestTimer_timeout"]

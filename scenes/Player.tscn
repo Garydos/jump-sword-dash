@@ -1,0 +1,286 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/tile242.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/tile247.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/tile246.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/tile245.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/tile243.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/tile244.png" type="Texture" id=7]
+[ext_resource path="res://assets/sfx/Hurt2.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sfx/Jump51.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sfx/Sword.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sfx/Dash.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sfx/Explosion.wav" type="AudioStream" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4.01127, 4.39567 )
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/tile898.png-b6d2a646fdeccaa0159b409500be0810.stex"
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 3, 3 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4, 4 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "sword_swing_left"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sword:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3, -9 ), Vector2( -5, -9 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sword:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 12, -9 ), Vector2( 20, -9 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "blinking"
+length = 0.1
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "jump",
+"speed": 9.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="StreamTexture" id=9]
+load_path = "res://.import/pause_button.png-441aa5d875f0014d32168657c4a741d7.stex"
+
+[sub_resource type="CircleShape2D" id=15]
+radius = 30.0
+
+[sub_resource type="StreamTexture" id=10]
+load_path = "res://.import/tile703.png-f5c888e52216d01fa7a7797810c6db60.stex"
+
+[sub_resource type="StreamTexture" id=11]
+load_path = "res://.import/tile701.png-e248996ddc7705899e5be1a5011ecc9e.stex"
+
+[sub_resource type="StreamTexture" id=12]
+load_path = "res://.import/jump.png-925e1cc349f476ced45a3498b069f222.stex"
+
+[sub_resource type="StreamTexture" id=13]
+load_path = "res://.import/dash.png-c6c687f57c4946c50f3654c9a4938756.stex"
+
+[sub_resource type="StreamTexture" id=14]
+load_path = "res://.import/sword.png-a2e65b3d2a9c84fba672e2cdb2a231de.stex"
+
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
+collision_layer = 4
+script = ExtResource( 1 )
+jump_speed = -450
+gravity = 1400
+max_vert_speed = 1200
+max_run_speed = 150
+default_knockback = Vector2( 50, -50 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.110176, 3.62086 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = 0
+smoothing_speed = 25.0
+drag_margin_left = 0.1
+drag_margin_top = 0.1
+drag_margin_right = 0.1
+drag_margin_bottom = 0.1
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="DashCooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="SwordCooldownTimer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="SwordTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="KnockbackTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="Sword" type="Area2D" parent="." groups=[
+"sword",
+]]
+position = Vector2( -5, -9 )
+
+[node name="SwordSprite" type="Sprite" parent="Sword"]
+position = Vector2( -8, 11 )
+scale = Vector2( 0.5, 0.5 )
+texture = SubResource( 2 )
+
+[node name="SwordHitBox" type="CollisionShape2D" parent="Sword"]
+position = Vector2( -8, 11 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="PlayerHurtBox" type="Area2D" parent="." groups=[
+"player",
+]]
+
+[node name="PHurtBox" type="CollisionShape2D" parent="PlayerHurtBox"]
+position = Vector2( 0, 4 )
+shape = SubResource( 4 )
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+
+[node name="SwordAnimation" type="AnimationPlayer" parent="."]
+anims/sword_swing_left = SubResource( 5 )
+anims/sword_swing_right = SubResource( 6 )
+
+[node name="PlayerAnimation" type="AnimationPlayer" parent="."]
+anims/blinking = SubResource( 7 )
+
+[node name="PlayerSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 8 )
+animation = "dead"
+
+[node name="StickTimer" type="Timer" parent="."]
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -2.0
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -6.0
+
+[node name="SwordSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -7.364
+
+[node name="DashSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -4.955
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="TouchScreenControls" type="CanvasLayer" parent="."]
+
+[node name="Pause" type="TouchScreenButton" parent="TouchScreenControls"]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 671, 32 )
+normal = SubResource( 9 )
+shape = SubResource( 15 )
+passby_press = true
+action = "pause"
+visibility_mode = 1
+
+[node name="Left" type="TouchScreenButton" parent="TouchScreenControls"]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 27, 346 )
+scale = Vector2( 4, 4 )
+normal = SubResource( 10 )
+passby_press = true
+action = "ui_left"
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="TouchScreenControls"]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 107, 346 )
+scale = Vector2( 4, 4 )
+normal = SubResource( 11 )
+passby_press = true
+action = "ui_right"
+visibility_mode = 1
+
+[node name="Jump" type="TouchScreenButton" parent="TouchScreenControls"]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 508, 347 )
+normal = SubResource( 12 )
+passby_press = true
+action = "ui_select"
+visibility_mode = 1
+
+[node name="Dash" type="TouchScreenButton" parent="TouchScreenControls"]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 655, 291 )
+normal = SubResource( 13 )
+passby_press = true
+action = "aux_button"
+visibility_mode = 1
+
+[node name="Dash2" type="TouchScreenButton" parent="TouchScreenControls"]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 66, 270 )
+normal = SubResource( 13 )
+passby_press = true
+action = "aux_button"
+visibility_mode = 1
+
+[node name="Sword" type="TouchScreenButton" parent="TouchScreenControls"]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 576, 291 )
+normal = SubResource( 14 )
+passby_press = true
+action = "action_button"
+visibility_mode = 1
+[connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_DashCooldownTimer_timeout"]
+[connection signal="timeout" from="SwordCooldownTimer" to="." method="_on_SwordCooldownTimer_timeout"]
+[connection signal="timeout" from="SwordTimer" to="." method="_on_SwordTimer_timeout"]
+[connection signal="timeout" from="KnockbackTimer" to="." method="_on_KnockbackTimer_timeout"]
+[connection signal="area_entered" from="Sword" to="." method="_on_Sword_area_entered"]
+[connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_PlayerHurtBox_area_entered"]
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_InvincibilityTimer_timeout"]
+[connection signal="timeout" from="StickTimer" to="." method="_on_StickTimer_timeout"]

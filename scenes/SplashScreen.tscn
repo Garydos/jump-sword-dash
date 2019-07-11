@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/SplashScreen.gd" type="Script" id=1]
+[ext_resource path="res://assets/music/ayy lmao studios.wav" type="AudioStream" id=2]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/ayy lmaologo.png-851dff224eee62f434e9c8d929198c21.stex"
+
+[sub_resource type="Animation" id=2]
+resource_name = "AyyLmao"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect3:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 480 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "RevealStudios"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect3:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 600 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Studios"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="SplashScreen" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 480.0
+margin_bottom = 512.0
+color = Color( 0.129412, 0.376471, 0.196078, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 240, 256 )
+texture = SubResource( 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_top = 390.0
+margin_right = 480.0
+margin_bottom = 512.0
+color = Color( 0.129412, 0.376471, 0.196078, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_right = 600.0
+margin_bottom = 290.0
+color = Color( 0.129412, 0.376471, 0.196078, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/AyyLmao = SubResource( 2 )
+anims/RevealStudios = SubResource( 3 )
+anims/RevealTitle = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/Studios = SubResource( 5 )
+
+[node name="AnimStart" type="Timer" parent="."]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_finished"]
+[connection signal="timeout" from="AnimStart" to="." method="_on_AnimStart_timeout"]

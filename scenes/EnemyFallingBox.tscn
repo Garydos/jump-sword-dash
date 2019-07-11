@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/EnemyFallingBox.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/Explosion.wav" type="AudioStream" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/colored_transparent_fixed.png-283f78511b4a6b33f0a339a4356a77fb.stex"
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 17, 84 )
+
+[sub_resource type="Animation" id=4]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 756 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -343.7 ]
+}
+
+[node name="EnemyFallingBox" groups=[
+"enemies_aux",
+] instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="0" groups=[
+"enemies_aux",
+]]
+
+[node name="Area2D" parent="." index="1" groups=[
+"enemies_aux",
+]]
+
+[node name="CollisionShape2D2" parent="Area2D" index="0" groups=[
+"enemies_aux",
+]]
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" parent="." index="3"]
+position = Vector2( 2.38419e-007, 0 )
+scale = Vector2( 0.7, 0.8 )
+
+[node name="Sprite" type="Sprite" parent="." index="8"]
+texture = SubResource( 2 )
+vframes = 32
+hframes = 32
+frame = 756
+
+[node name="FallTriggerArea" type="Area2D" parent="." index="9" groups=[
+"enemies_aux",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallTriggerArea" index="0" groups=[
+"enemies_aux",
+]]
+position = Vector2( 0, 76 )
+shape = SubResource( 3 )
+
+[node name="FallingBoxAnim" type="AnimationPlayer" parent="." index="10" groups=[
+"enemies_aux",
+]]
+anims/explode = SubResource( 4 )
+
+[node name="ExplosionTimer" type="Timer" parent="." index="11"]
+wait_time = 0.5
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="." index="12"]
+stream = ExtResource( 3 )
+[connection signal="area_entered" from="FallTriggerArea" to="." method="_on_FallTriggerArea_area_entered"]
+[connection signal="timeout" from="ExplosionTimer" to="." method="_on_ExplosionTimer_timeout"]

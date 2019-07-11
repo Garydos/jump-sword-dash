@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ayy lmao studios.ogg-f397aef7bfa10d285e1ccf2ef1c00422.oggstr"
+
+[deps]
+
+source_file="res://assets/music/ayy lmao studios.ogg"
+dest_files=[ "res://.import/ayy lmao studios.ogg-f397aef7bfa10d285e1ccf2ef1c00422.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
